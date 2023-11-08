@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Selection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
 </head>
 <body>
-    <svg width="500" height="140">
-        <g fill="deeppink" stroke="indigo" stroke-width="3">
-            <rect x="20" y="20" width="50" height="50" />
-            <rect x="80" y="20" width="50" height="50" />
-            <rect x="140" y="20" width="50" height="50" />
-            <rect x="200" y="20" width="50" height="50" />
-        </g>
-    </svg>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+    <div id="container">
+        <span>First Span</span>
+        <p>First Paragraph</p>
+        <p>Second Paragraph</p>
+        <p>Third Paragraph</p>
+        <span>Second Span</span>
+        <p>This is about <span id="inside">Selections</span></p>
+    </div>
     <script>
-        d3.select("rect:nth-child(2)").style("fill", "blue")
+        // d3.select("div").style("background", "green"); // Sets bg for one element
+        // d3.select("p").style("color", "red") // Sets color for one paragraph
+        // d3.selectAll("p").style("color", "red") // Sets color for all paragraphs
+        // d3.select("#container").style("background", "yellow");
+        d3.select("#inside").style("background", "pink");
     </script>
 </body>
 </html>
