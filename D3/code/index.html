@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selection Part 2</title>
+    <title>Style Selected Elements</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
 </head>
 <body>
-    <svg width="400" height="100" id="one">
-        <!-- CX: X Axis (HOR), CY: Y Axis (VERT), R: Radius of Circle -->
-        <circle cx="40" cy="50" r="40"></circle>
-        <circle cx="130" cy="50" r="40"></circle>
-        <circle cx="220" cy="50" r="40"></circle>
-        <circle cx="310" cy="50" r="40"></circle>
-    </svg>
-    <br><br>
-    <svg width="400" height="100" id="two">
-        <!-- CX: X Axis (HOR), CY: Y Axis (VERT), R: Radius of Circle -->
-        <circle cx="40" cy="50" r="40"></circle>
-        <circle cx="130" cy="50" r="40"></circle>
-        <circle cx="220" cy="50" r="40"></circle>
-        <circle cx="310" cy="50" r="40"></circle>
+    <button onclick="changeLook();">Update</button><br><br>
+    <svg width="600" height="600">
+        <!-- Display Circles Horizontally -->
+        <circle cx="50" cy="50" r="40"></circle>
+        <circle cx="140" cy="50" r="40"></circle>
+        <circle cx="230" cy="50" r="40"></circle>
+        <circle cx="320" cy="50" r="40"></circle>
+        <g transform="translate(20, 120)">
+            <!-- Display Rects Vertically -->
+            <rect width="50" height="50" y="60"></rect>
+            <rect width="50" height="50" y="120"></rect>
+            <rect width="50" height="50" y="180"></rect>
+            <rect width="50" height="50" y="240"></rect>
+        </g>
     </svg>
     <script>
-        // d3.selectAll("circle").style("fill", "indigo");
-        // d3.selectAll("#two > circle").style("fill", "deeppink")
-        // d3.selectAll("circle:nth-child(2)").style("fill", "indigo");
-        // d3.selectAll("circle:nth-child(even)").style("fill", "indigo");
-        // d3.selectAll("circle:nth-child(odd)").style("fill", "deeppink");
-        d3.selectAll("#one > circle:nth-child(even), #two > circle:nth-child(odd)").style("fill", "indigo");
-        d3.selectAll("#one > circle:nth-child(odd), #two > circle:nth-child(even)").style("fill", "deeppink");
+        let changeLook = () => {
+            d3.selectAll("circle").style("fill", "deeppink");
+            // d3.selectAll("rect").style("stroke", "green");
+            d3.selectAll("rect")
+                .style("fill", "indigo")
+                .style("stroke", "deeppink")
+                .style("stroke-width", "4")
+        }
     </script>
 </body>
 </html>
