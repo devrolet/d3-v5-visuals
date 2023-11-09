@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style Selected Elements</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
-</head>
-<body>
-    <button onclick="changeLook();">Update</button><br><br>
-    <svg width="600" height="600">
-        <!-- Display Circles Horizontally -->
-        <circle cx="50" cy="50" r="40"></circle>
-        <circle cx="140" cy="50" r="40"></circle>
-        <circle cx="230" cy="50" r="40"></circle>
-        <circle cx="320" cy="50" r="40"></circle>
-        <g transform="translate(20, 120)">
-            <!-- Display Rects Vertically -->
-            <rect width="50" height="50" y="60"></rect>
-            <rect width="50" height="50" y="120"></rect>
-            <rect width="50" height="50" y="180"></rect>
-            <rect width="50" height="50" y="240"></rect>
-        </g>
-    </svg>
-    <script>
-        let changeLook = () => {
-            d3.selectAll("circle").style("fill", "deeppink")
-            .style("stroke", "indigo").style("stroke-width", strokeWidth);
-            // d3.selectAll("rect").style("stroke", "green");
-            d3.selectAll("rect")
-                .style("fill", "indigo")
-                .style("stroke", "deeppink")
-                .style("stroke-width", "4")
-
-            d3.selectAll("rect").style("opacity", randomNum)
-        }
-        let randomNum = () => Math.random()
-        let strokeWidth = (data,index) => index*5;
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Style Selected Elements</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+        <style>
+            .changeColor {
+                stroke: indigo;
+                fill: deeppink;
+                stroke-width: 4;
+            }
+            .boxes {
+                width: 100px;
+                height: 100px;
+                border: 3px solid black;
+                background: indigo;
+                float: left; 
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="addClass();">Change</button>
+        <button onclick="changeBack();">Back</button><br><br>
+        <svg width="500" height="200">
+            <!-- Display Circles Horizontally -->
+            <circle cx="50" cy="50" r="40"></circle>
+            <circle cx="140" cy="50" r="40"></circle>
+            <circle cx="230" cy="50" r="40"></circle>
+            <circle cx="320" cy="50" r="40"></circle>
+        </svg>
+        <button onclick="addBoxes();">Add</button>
+        <div id="parent">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <script>
+            function addBoxes() {
+                d3.select("#parent").selectAll("div").classed("boxes", true);
+            };
+            const addClass = () => d3.selectAll("circle").classed("changeColor", true);
+            const changeBack = () => d3.selectAll("circle").classed("changeColor", even);
+            const even = (d, i) => (i%2 == 0) ? true : false;
+        </script>
+    </body>
 </html>
