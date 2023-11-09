@@ -39,11 +39,11 @@
         </div>
         <script>
             function addBoxes() {
-                d3.select("#parent").selectAll("div").classed("boxes", true);
+                d3.selectAll("#parent > div").classed("boxes", true);
             };
             const addClass = () => d3.selectAll("circle").classed("changeColor", true);
-            const changeBack = () => d3.selectAll("circle").classed("changeColor", even);
-            const even = (d, i) => (i%2 == 0) ? true : false;
+            const changeBack = () => d3.selectAll("circle").classed("changeColor", selectEven);
+            const selectEven = (d, i) => (i%2 == 0) ? true : false;
         </script>
     </body>
 </html>
