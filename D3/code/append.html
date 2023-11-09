@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append & Insert</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+</head>
+<body>
+    <button onclick="addElement()">Add Element</button>
+    <div id="parent">
+        <p>First Paragraph</p>
+        <p>Second Paragraph</p>
+        <p>Third Paragraph</p>
+    </div>
+    <script>
+        let addElement = () => {
+            // Append Method
+            // d3.select("#parent")
+            //     .append("p")
+            //     .text("Last Paragraph")
+            //     .style("font-weight", "bold");
+
+            // Insert Method
+            d3.select("#parent")
+                .insert("p", "p:nth-child(3)") // second param can select a certain position, if "p" used as 2nd arg alone it'll look for the first matching element
+                .text("Paragraph")
+                .style("font-weight", "bold");
+        }
+    </script>
+</body>
+</html>
