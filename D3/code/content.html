@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+</head>
+<body>
+    <button onclick="update()">Change</button>
+    <p>First Paragraph</p>
+    <div>Here goes the result...</div>
+    <span></span>
+    <script>
+        const update = () => {
+            d3.select("p").text("New Content"); // changes the text content
+            d3.select("div").html("<b>New Content</b>"); // formats the tags used correctly
+            d3.select("span").text("New Content"); // only changes the text content
+        }
+
+    </script>
+</body>
+</html>
